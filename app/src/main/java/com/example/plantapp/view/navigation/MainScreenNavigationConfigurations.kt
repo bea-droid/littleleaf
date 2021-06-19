@@ -11,9 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.plantapp.R
 import com.example.plantapp.view.view.Theme
-import com.example.plantapp.view.view.plant.PlantViewModel
 import com.example.plantapp.view.view.plant_add.PlantAddScreen
-import com.example.plantapp.view.view.tasks.Task
+import com.example.plantapp.view.view.tasks.TaskModel
 import com.example.plantapp.view.view.tasks.TaskScreen
 import view.PlantScreen
 
@@ -26,18 +25,7 @@ fun MainScreenNavigationConfigurations(
             PlantScreen(navController = navController, plantViewModel = hiltNavGraphViewModel(it))
         }
         composable(BottomNavigationScreens.Tasks.route) {
-            TaskScreen(taskList = listOf(
-                Task(
-                    taskName = "Water your Monstera",
-                    dueDate = "Task Due: 2 Days Ago",
-                    imageResource = R.drawable.monst
-                ),
-                Task(
-                    taskName = "Repot your Peace lily",
-                    dueDate = "Task Due: 1 Day",
-                    imageResource = R.drawable.monst
-                )
-            ), roomList = listOf(
+            TaskScreen(roomList = listOf(
                 Theme(
                     name = "Living room",
                     imageResource = R.drawable.succulents
@@ -50,7 +38,7 @@ fun MainScreenNavigationConfigurations(
                     name = "Kitchen",
                     imageResource = R.drawable.succs
                 )
-            ))
+            ), viewModel = hiltNavGraphViewModel(it))
         }
         composable(BottomNavigationScreens.PlantAdd.route) {
             PlantAddScreen(plantViewModel = hiltNavGraphViewModel(it))

@@ -1,9 +1,9 @@
 package com.example.plantapp.di
 
 import android.content.Context
-import androidx.room.Room
 import com.example.plantapp.data.AppDatabase
 import com.example.plantapp.data.PlantDao
+import com.example.plantapp.data.TaskDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +24,10 @@ class DatabaseModule {
     @Provides
     fun providePlantDao(appDatabase: AppDatabase): PlantDao {
         return appDatabase.plantDao()
+    }
+
+    @Provides
+    fun provideTaskDao(appDatabase: AppDatabase): TaskDao {
+        return appDatabase.taskDao()
     }
 }

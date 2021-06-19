@@ -11,12 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.plantapp.R
 
 @Composable
-fun TaskRow(task: Task, onTaskClick: (Task) -> Unit) {
+fun TaskRow(task: TaskModel, onTaskClick: (TaskModel) -> Unit) {
+    val context = LocalContext.current
     Row(modifier = Modifier.clickable(onClick = { onTaskClick(task) })
         .fillMaxWidth()
         .padding(start = 16.dp, bottom = 8.dp, top = 8.dp, end = 16.dp)) {
@@ -29,10 +32,10 @@ fun TaskRow(task: Task, onTaskClick: (Task) -> Unit) {
         )
 
         Column(modifier = Modifier.padding(start = 16.dp).align(Alignment.CenterVertically)) {
-            Text(text = task.taskName,
+            Text(text = context.getString(R.string.fertilze_notification, task.plantName),
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.body1)
-            Text(text = task.dueDate,
+            Text(text = context.getString(R.string.reoccur_label, task.weeks, task.days),
                 style = MaterialTheme.typography.body1)
         }
         Checkbox(checked = task.isCompleted, onCheckedChange = {

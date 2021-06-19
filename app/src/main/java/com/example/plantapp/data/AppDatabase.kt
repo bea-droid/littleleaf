@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = arrayOf(Plant::class), version = 1)
+@Database(entities = arrayOf(Plant::class, Task::class), version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun plantDao(): PlantDao
+    abstract fun taskDao(): TaskDao
 
     companion object {
         // For Singleton instantiation

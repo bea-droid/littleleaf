@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -17,8 +19,9 @@ import com.example.plantapp.view.view.Theme
 import com.example.plantapp.view.view.ThemeItem
 
 @Composable
-fun TaskScreen(taskList: List<Task>, roomList: List<Theme>) {
+fun TaskScreen(roomList: List<Theme>, viewModel: TaskViewModel) {
     val context = LocalContext.current
+    val taskList by viewModel.tasks.observeAsState(emptyList())
     Column() {
         Text(
             text = "My rooms",

@@ -18,6 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.plantapp.R
 import com.example.plantapp.data.Plant
 import com.example.plantapp.view.view.plant.PlantViewModel
+import com.example.plantapp.view.view.tasks.TaskType
 import java.util.*
 import kotlin.random.Random
 
@@ -48,20 +49,20 @@ fun PlantAddScreen(plantViewModel: PlantAddViewModel = viewModel()) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 16.dp)
             )
-            NotificationSelector(listOf("Water", "Fertilize")) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(reminder = it)}
+            NotificationSelector(listOf(TaskType.WATER.name, TaskType.FERTILIZE.name)) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(reminder = TaskType.valueOf(it))}
         Text(
             text = "every",
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(16.dp)
         )
-        NotificationSelector(listOf("1", "2", "3", "4")) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(weeks = it)}
+        NotificationSelector(listOf("1", "2", "3", "4")) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(weeks = it.toInt())}
 
         Text(
             text = "weeks",
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        NotificationSelector(listOf("1", "2", "3", "4", "5", "6")) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(days = it)}
+        NotificationSelector(listOf("1", "2", "3", "4", "5", "6")) { plantViewModel.currentState.value = plantViewModel.currentState.value.copy(days = it.toInt())}
 
         Text(
             text = "days"

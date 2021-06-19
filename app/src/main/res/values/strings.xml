@@ -4,4 +4,8 @@
     <string name="tasks_route">Tasks</string>
     <string name="plant_add">com.example.plantapp.view.ui.Plant Add</string>
 
+    <string name="fertilze_notification">%s needs to be fertilized</string>
+    <string name="water_notification">%s needs to be watered</string>
+    <string name="reoccur_label">reoccurs every %d weeks and %d days</string>
+
 </resources>
