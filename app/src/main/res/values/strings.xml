@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">plantapp</string>
+    <string name="plant_route">Plants</string>
+    <string name="tasks_route">Tasks</string>
+    <string name="plant_add">com.example.plantapp.view.ui.Plant Add</string>
+
+</resources>
